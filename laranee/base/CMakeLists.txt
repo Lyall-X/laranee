@@ -1,0 +1,1 @@
+BUILD_LIB_MACRO(base)
