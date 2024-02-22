@@ -16,9 +16,8 @@ fi
 
 # BUILD_TYPE=Debug, Release or RelWithDebInfo ...
 BUILD_TYPE=$1
-cmake -B build -G Ninja \
+cmake -B build \
       -DCMAKE_BUILD_TYPE="${BUILD_TYPE}" \
-      -DCMAKE_C_COMPILER=${CC} \
       -DCMAKE_CXX_COMPILER=${CXX}
 
 cmake --build build --parallel $(nproc)
