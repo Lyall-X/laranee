@@ -5,9 +5,10 @@ project(laranee CXX)
 # c++ version required
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CXX_FLAGS "${CXX_FLAGS} -fsanitize=address -fsanitize=leak -fsanitize-recover=address -fno-omit-frame-pointer")
 
 # build message output
-set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_VERBOSE_MAKEFILE OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # suffix to debug library version automatically

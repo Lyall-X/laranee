@@ -8,7 +8,6 @@ set(CXX_FLAG_LIST
     "-fopenmp"
 )
 string(REPLACE ";" " " CXX_FLAGS "${CXX_FLAG_LIST}")
-
 set(CMAKE_CXX_FLAGS_DEBUG "${CXX_FLAGS} -O0 -g -ggdb")                            # Debug
 set(CMAKE_CXX_FLAGS_RELEASE "${CXX_FLAGS} -O2 -DNDEBUG")                          # Release
 set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CXX_FLAGS} -O2 -g -DNDEBUG")                # RelWithDebInfo

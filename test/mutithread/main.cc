@@ -1,7 +1,5 @@
-#include "net/net.cc"
-
+#include <pthread.h>
 int main()
 {
-    CallBaseFunc();
     return 0;
 }
