@@ -14,6 +14,6 @@ macro(BUILD_SERVER_MACRO project_name)
 endmacro(BUILD_SERVER_MACRO project_name)
 
 macro(BUILD_MAIN_MACRO main_file)
-        add_executable(${main_file} ${main_file}.cc)
+    add_executable(${main_file} ${main_file}.cc)
     set_target_properties(${main_file} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_INSTALL_PREFIX}/test)
 endmacro(BUILD_MAIN_MACRO main_file)
