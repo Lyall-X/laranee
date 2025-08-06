@@ -1,0 +1,2 @@
+BUILD_SERVER_MACRO(laranee)
+target_link_libraries(laranee PRIVATE net)

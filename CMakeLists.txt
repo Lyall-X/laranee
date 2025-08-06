@@ -43,6 +43,7 @@ include_directories(
 )
 
 add_subdirectory(laranee)
+add_subdirectory(src)
 add_subdirectory(test)
 
 message("CMAKE_CXX_FLAGS_DEBUG is ${CMAKE_CXX_FLAGS_DEBUG}")

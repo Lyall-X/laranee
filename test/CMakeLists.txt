@@ -1,3 +1,2 @@
-add_subdirectory(mutithread)
-# add_subdirectory(sock)
-# add_subdirectory(client)
+add_subdirectory(ecs)
+add_subdirectory(udp)

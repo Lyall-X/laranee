@@ -23,3 +23,7 @@
 #include <vector>
 
 #include "logging.h"
+
+#define SOCKET_FD int
+#define RECV_BUF 2 * 1024 * 1024  // 2M
+#define SEND_BUF 2 * 1024 * 1024  // 2M

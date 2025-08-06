@@ -5,33 +5,33 @@
  * *
  * ***************************************************************************
  *
- * @file io.h
+ * @file server.h
  * @author lyall (liuyue@papegames.net)
  * @date 2025-08-06
  * @brief
  *
  */
+
 #pragma once
 #include "base/define.h"
 #include "base/ecs.h"
 #include "base/thread.h"
 
-struct EpollComponent : public Component
+#define IO_THREAD_NUM 2
+class ReactorEntity;
+
+struct MainThreadComponent : public Component
 {
+    Thread main_thread{"main_thread"};
 };
 
-struct IOThreadComponent : public Component
+struct ReactorComponent : public Component
 {
-    Thread io_thread{"io_thread"};
+    std::vector<ReactorEntity*> reactors_;
 };
 
-struct AcceptComponent : public Component
-{
-    SOCKET_FD sockfd = -1;
-};
-
-class ReactorEntity : public Entity<EpollComponent, IOThreadComponent, AcceptComponent>
+class ServerEntity : public Entity<MainThreadComponent, ReactorComponent>
 {
  public:
-    ReactorEntity();
+    ServerEntity();
 };

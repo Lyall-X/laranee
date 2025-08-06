@@ -31,7 +31,7 @@ class TestSystem : public System<NetEntity>,
 int main()
 {
     Logging::Instance().Init("test_multithread");
-    for (int i = 0; i < 10; ++i)
+    for (int i = 0; i < 2000; ++i)
     {
         NetEntity* entity = TestSystem::Instance().CreateEntity<NetEntity>();
         entity->Print();
