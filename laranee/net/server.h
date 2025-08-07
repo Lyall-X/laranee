@@ -17,8 +17,9 @@
 #include "base/ecs.h"
 #include "base/thread.h"
 
-#define IO_THREAD_NUM 2
+#define IO_THREAD_NUM 0
 class ReactorEntity;
+class ConnEntity;
 
 struct MainThreadComponent : public Component
 {
@@ -27,7 +28,13 @@ struct MainThreadComponent : public Component
 
 struct ReactorComponent : public Component
 {
-    std::vector<ReactorEntity*> reactors_;
+    ReactorEntity* accept_reactor_ = nullptr;
+    std::vector<ReactorEntity*> io_reactors_;
+};
+
+struct ConnComponent : public Component
+{
+    std::vector<ConnEntity*> connections_;
 };
 
 class ServerEntity : public Entity<MainThreadComponent, ReactorComponent>

@@ -13,6 +13,7 @@
  */
 #pragma once
 #include "base/define.h"
+#include "ikcp.h"
 
 struct KCPObj
 {

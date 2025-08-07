@@ -32,6 +32,7 @@ set(CXX_FLAG_LIST
     "-Wno-unused-result"
     "-Wno-misleading-indentation"
     "-fopenmp"
+    "-Wno-unused-variable"
 )
 string(REPLACE ";" " " CXX_FLAGS "${CXX_FLAG_LIST}")
 set(CMAKE_CXX_FLAGS_DEBUG "${CXX_FLAGS} -O0 -g -ggdb")                            # Debug

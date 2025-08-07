@@ -22,12 +22,14 @@ void NetSystem::Run(std::function<bool()>&& main_loop)
         return main_loop();
     });
 
-    for (auto* reactor : server_entity_->GetComponent<ReactorComponent>()->reactors_)
+    auto* reactor_cmp = server_entity_->GetComponent<ReactorComponent>();
+    reactor_cmp->accept_reactor_->GetComponent<IOThreadComponent>()->io_thread.Run([reactor_cmp]() {
+        return reactor_cmp->accept_reactor_->OnLoop();
+    });
+    for (auto* reactor : reactor_cmp->io_reactors_)
     {
         reactor->GetComponent<IOThreadComponent>()->io_thread.Run([reactor]() {
-            GDEBUG("IO thread for reactor {} is running", reactor->Id());
-            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-            return true;
+            return reactor->OnLoop();
         });
     }
     while (running_.load())
@@ -41,8 +43,11 @@ void NetSystem::Stop()
     running_.store(false);
     MainThreadComponent* cmp = server_entity_->GetComponent<MainThreadComponent>();
     cmp->main_thread.Stop();
-    for (auto* reactor : server_entity_->GetComponent<ReactorComponent>()->reactors_)
+    auto* reactor_cmp = server_entity_->GetComponent<ReactorComponent>();
+    reactor_cmp->accept_reactor_->GetComponent<IOThreadComponent>()->io_thread.Stop();
+    for (auto* reactor : reactor_cmp->io_reactors_)
     {
         reactor->GetComponent<IOThreadComponent>()->io_thread.Stop();
     }
+    GINFO("NetSystem stopped");
 }
